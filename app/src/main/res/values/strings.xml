@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyCasino3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings_title">SETTINGS</string>
+    <string name="settings_textview_change">change the theme</string>
+    <string name="settings_button_title">change</string>
+    <string name="tutorial">Hi!Let me tell you the meaning of this simple game: you need to choose one of several options: the number of my points will be even, the number of my points will be odd or I will have more points than the opponent.Points should be obtained by tossing dice.Good luck!</string>
+</resources>

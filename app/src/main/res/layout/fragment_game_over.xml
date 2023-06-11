@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#076015"
+    tools:context=".view.fragments.GameOverFragment">
+
+    <ImageView
+        android:layout_width="373dp"
+        android:id="@+id/id_gameover_img_dice"
+        android:layout_gravity="center"
+        android:layout_height="220dp"/>
+
+    <TextView
+        android:layout_width="242dp"
+        android:layout_height="70dp"
+        android:text="RESULTS"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/id_gameover_pointscored"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="points scored:0"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/id_gameover_last_record"
+        android:layout_width="300dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="previous record:0"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/id_gameover_message"
+        android:layout_width="356dp"
+        android:layout_height="131dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:id="@+id/id_gameover_button_again"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@color/black"
+        android:text="start over"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:id="@+id/id_gameover_button_to_menu"
+        android:text="go back to the menu"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_height="70dp"/>
+
+
+</LinearLayout>

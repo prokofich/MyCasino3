@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/id_menu_ll"
+    android:background="#076015"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.MenuFragment">
+
+    <TextView
+        android:id="@+id/id_menu_title"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="DICE"
+        android:textStyle="italic"
+        android:textSize="55sp"
+        android:textColor="@color/white"
+        android:layout_height="70dp"/>
+    <View
+        android:id="@+id/id_menu_view_linea"
+        android:layout_width="200dp"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:layout_height="10dp"/>
+
+    <ImageView
+        android:id="@+id/id_menu_img_dice"
+        android:layout_width="237dp"
+        android:layout_height="135dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_menu_start_game"
+        android:layout_width="268dp"
+        android:text="GAME"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_menu_settings"
+        android:layout_width="268dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@color/black"
+        android:text="tutorial"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_menu_exit"
+        android:layout_width="268dp"
+        android:text="EXIT"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/id_textview_facts_dice"
+        android:layout_width="362dp"
+        android:gravity="center"
+        android:text="Interesting fact: the sum of points in a standard dice is always 7 points."
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+
+
+</LinearLayout>

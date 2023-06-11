@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/id_splash_ll"
+    android:background="#076015"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.SplashActivity">
+
+    <ImageView
+        android:id="@+id/id_splash_img"
+        android:layout_width="399dp"
+        android:layout_height="248dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp" />
+
+    <TextView
+        android:id="@+id/id_splash_title"
+        android:layout_width="375dp"
+        android:layout_height="148dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:text="come in every day and try your luck"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
+
+    <ProgressBar
+        android:id="@+id/id_splash_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="375dp"
+        android:layout_height="78dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/white"
+        android:scaleY="3" />
+
+</LinearLayout>
