@@ -1,5 +1,6 @@
 package com.example.mycasino3.view.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,12 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.mycasino3.R
-import com.example.mycasino3.constant.*
+import com.example.mycasino3.model.constant.KEY_POINT
+import com.example.mycasino3.model.constant.MAIN
+import com.example.mycasino3.model.constant.listPoints
+import com.example.mycasino3.model.constant.url_dice
+import com.example.mycasino3.model.constant.url_dice_point
+import com.example.mycasino3.model.constant.url_dice_question
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,13 +24,12 @@ import kotlinx.coroutines.launch
 
 class GameFragment : Fragment() {
 
-    var oppenent_point1 = 0
-    var oppenent_point2 = 0
-    var my_point1 = 0
-    var my_point2 = 0
-    var correct = 0
-
-    var flagShowOpponentDice = false
+    private var oppenent_point1 = 0
+    private var oppenent_point2 = 0
+    private var my_point1 = 0
+    private var my_point2 = 0
+    private var correct = 0
+    private var flagShowOpponentDice = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +45,6 @@ class GameFragment : Fragment() {
         loadImageDice()
         loadDiceQuestion()
 
-
         /////////////////////НАЧАТЬ ИГРУ/////////////////////////
         id_game_go.setOnClickListener {
             showToast("toss the opponent's dice or choose the parity of points")
@@ -55,7 +59,6 @@ class GameFragment : Fragment() {
             id_game_button_toss_dice.isEnabled = true
         }
         ////////////////////////////////////////////////////////
-
 
         ///////////////////КИНУТЬ КОСТИ СОПЕРНИКА////////////////
         id_game_button_toss_dice.setOnClickListener {
@@ -152,54 +155,36 @@ class GameFragment : Fragment() {
     }
 
     private fun loadDiceQuestion(){
-        Glide.with(requireContext())
-            .load(url_dice_question)
-            .into(id_game_dice_my1)
-        Glide.with(requireContext())
-            .load(url_dice_question)
-            .into(id_game_dice_my2)
+        Glide.with(requireContext()).load(url_dice_question).into(id_game_dice_my1)
+        Glide.with(requireContext()).load(url_dice_question).into(id_game_dice_my2)
     }
 
     private fun loadDiceQuestionOpponent(){
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000)
-            Glide.with(requireContext())
-                .load(url_dice_question)
-                .into(id_game_dice_op1)
-            Glide.with(requireContext())
-                .load(url_dice_question)
-                .into(id_game_dice_op2)
+            Glide.with(requireContext()).load(url_dice_question).into(id_game_dice_op1)
+            Glide.with(requireContext()).load(url_dice_question).into(id_game_dice_op2)
         }
     }
 
     private fun loadImageDice(){
-        Glide.with(requireContext())
-            .load(url_dice)
-            .into(id_game_img_dice)
+        Glide.with(requireContext()).load(url_dice).into(id_game_img_dice)
     }
 
     private fun showDiceOpponent(){
         oppenent_point1 = listPoints.shuffled()[1]
         oppenent_point2 = listPoints.shuffled()[1]
 
-        Glide.with(requireContext())
-            .load(url_dice_point+"${oppenent_point1}.png")
-            .into(id_game_dice_op1)
-        Glide.with(requireContext())
-            .load(url_dice_point+"${oppenent_point2}.png")
-            .into(id_game_dice_op2)
+        Glide.with(requireContext()).load(url_dice_point +"${oppenent_point1}.png").into(id_game_dice_op1)
+        Glide.with(requireContext()).load(url_dice_point +"${oppenent_point2}.png").into(id_game_dice_op2)
     }
 
     private fun showDiceMy(){
         my_point1 = listPoints.shuffled()[1]
         my_point2 = listPoints.shuffled()[1]
 
-        Glide.with(requireContext())
-            .load(url_dice_point+"${my_point1}.png")
-            .into(id_game_dice_my1)
-        Glide.with(requireContext())
-            .load(url_dice_point+"${my_point2}.png")
-            .into(id_game_dice_my2)
+        Glide.with(requireContext()).load(url_dice_point +"${my_point1}.png").into(id_game_dice_my1)
+        Glide.with(requireContext()).load(url_dice_point +"${my_point2}.png").into(id_game_dice_my2)
     }
 
     private fun showToast(message:String){
@@ -214,6 +199,7 @@ class GameFragment : Fragment() {
         id_game_button_toss_dice.isEnabled = false
     }
 
+    @SuppressLint("SetTextI18n")
     private fun rightAnswer(){
         showToast("well done!right!")
         correct+=1
@@ -225,18 +211,14 @@ class GameFragment : Fragment() {
     }
 
     private fun wrongAnswer(){
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putInt(KEY_POINT,correct)
         allButtonToEnableFalse()
         showToast("unfortunately you didn't guess")
         CoroutineScope(Dispatchers.Main).launch{
             delay(3000)
-            MAIN.navController.navigate(R.id.action_gameFragment_to_gameOverFragment,bundle)
+            MAIN.navController?.navigate(R.id.action_gameFragment_to_gameOverFragment,bundle)
         }
     }
-
-
-
-
 
 }

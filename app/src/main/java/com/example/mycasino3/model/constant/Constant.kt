@@ -1,4 +1,4 @@
-package com.example.mycasino3.constant
+package com.example.mycasino3.model.constant
 
 import com.example.mycasino3.view.activity.MainActivity
 

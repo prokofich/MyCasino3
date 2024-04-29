@@ -1,4 +1,4 @@
-package com.example.mycasino3.api
+package com.example.mycasino3.model.api
 
 import com.example.mycasino3.model.ResponceWebView
 import retrofit2.Response

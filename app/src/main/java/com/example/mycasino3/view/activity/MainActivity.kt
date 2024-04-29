@@ -7,14 +7,14 @@ import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.mycasino3.R
-import com.example.mycasino3.constant.APP_PREFERENCES
-import com.example.mycasino3.constant.MAIN
-import com.example.mycasino3.constant.RECORD
+import com.example.mycasino3.model.constant.APP_PREFERENCES
+import com.example.mycasino3.model.constant.MAIN
+import com.example.mycasino3.model.constant.RECORD
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var navController: NavController
+    var navController : NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,24 +23,14 @@ class MainActivity : AppCompatActivity() {
         MAIN = this
         navController = Navigation.findNavController(this,R.id.id_nav_host)
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
     }
 
-    fun getRecord(): Int {
+    fun getRecord() : Int {
         return getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE).getInt(RECORD, 0)
     }
 
-    fun setRecord(record:Int){
-        val preferences = getSharedPreferences(APP_PREFERENCES,Context.MODE_PRIVATE)
-        preferences.edit()
-            .putInt(RECORD,record)
-            .apply()
-
+    fun setRecord(record : Int) {
+        getSharedPreferences(APP_PREFERENCES,Context.MODE_PRIVATE).edit().putInt(RECORD,record).apply()
     }
-
-
 
 }

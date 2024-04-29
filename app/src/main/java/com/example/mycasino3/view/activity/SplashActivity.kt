@@ -1,6 +1,7 @@
 package com.example.mycasino3.view.activity
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -10,18 +11,18 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.mycasino3.R
-import com.example.mycasino3.constant.APP_PREFERENCES
-import com.example.mycasino3.constant.ID
-import com.example.mycasino3.constant.url_dice
+import com.example.mycasino3.model.constant.APP_PREFERENCES
+import com.example.mycasino3.model.constant.ID
+import com.example.mycasino3.model.constant.url_dice
 import com.example.mycasino3.viewmodel.SplashViewModel
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.android.synthetic.main.fragment_game_over.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +40,8 @@ class SplashActivity : AppCompatActivity() {
 
         val splashViewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        var namePhone = Build.MODEL.toString()
-        var locale = Locale.getDefault().getDisplayLanguage().toString()
+        val namePhone = Build.MODEL.toString()
+        val locale = Locale.getDefault().displayLanguage.toString()
         var id = ""
 
         if (getMyId()!=""){
@@ -63,45 +64,41 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    private fun loadImageDice(){
+    private fun loadImageDice() {
         Glide.with(this)
             .load(url_dice)
             .into(id_splash_img)
     }
 
-    fun getMyId():String{
-        var preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).getString(ID,"")
-        return preferences ?: ""
+    private fun getMyId() : String {
+        return getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).getString(ID,"").toString()
     }
 
-    fun setMyId(id:String){
-        var preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        preferences.edit()
-            .putString(ID,id)
-            .apply()
+    private fun setMyId(id : String) {
+        getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit().putString(ID,id).apply()
     }
 
-    fun goToMainPush() {
+    private fun goToMainPush() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
-            var intent = Intent(this@SplashActivity,MainActivity::class.java)
+            val intent = Intent(this@SplashActivity,MainActivity::class.java)
             startActivity(intent)
         }
     }
 
-    fun goToMainNoPush() {
+    private fun goToMainNoPush() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
-            var intent = Intent(this@SplashActivity,MainActivity::class.java)
+            val intent = Intent(this@SplashActivity,MainActivity::class.java)
             intent.putExtra("url","nopush")
             startActivity(intent)
         }
     }
 
-    fun goToWeb(url:String) {
+    private fun goToWeb(url:String) {
         CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
-            var intent = Intent(this@SplashActivity,WebViewActivity::class.java)
+            val intent = Intent(this@SplashActivity,WebViewActivity::class.java)
             intent.putExtra("url",url)
             startActivity(intent)
         }

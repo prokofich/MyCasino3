@@ -1,4 +1,4 @@
-package com.example.mycasino3
+package com.example.mycasino3.model.application
 
 import android.app.Application
 import com.onesignal.OneSignal
